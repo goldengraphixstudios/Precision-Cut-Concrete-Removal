@@ -12,15 +12,15 @@ const siteUrl = isGithubPages
   : "http://localhost:3000";
 
 const nextConfig: NextConfig = {
-  output: "export",
+  output: isGithubPages ? "export" : undefined,
   images: {
-    unoptimized: true,
+    unoptimized: isGithubPages,
   },
-  trailingSlash: true,
+  trailingSlash: isGithubPages,
   basePath,
   assetPrefix: basePath,
   env: {
-    NEXT_PUBLIC_STATIC_EXPORT: "true",
+    NEXT_PUBLIC_STATIC_EXPORT: isGithubPages ? "true" : "false",
     NEXT_PUBLIC_SITE_URL: siteUrl,
     NEXT_PUBLIC_BASE_PATH: basePath,
   },

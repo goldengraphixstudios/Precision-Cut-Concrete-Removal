@@ -23,7 +23,7 @@ LEAD_TO_EMAIL=
 LEAD_FROM_EMAIL=
 ```
 
-The lead form posts to `/api/lead` and sends an email using Nodemailer. In development, submissions are also logged to `data/leads.json`.
+The lead form posts to `/api/lead` and sends an email using Nodemailer (when deployed on a server).
 
 ## Static Hosting (GitHub Pages)
 
