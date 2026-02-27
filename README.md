@@ -10,14 +10,6 @@ npm run dev
 
 App runs at `http://localhost:3000`.
 
-## Fetch Gallery Images
-
-```bash
-npm run fetch:gallery
-```
-
-Images are downloaded to `public/gallery`. If you skip this, the site shows clean gradient placeholders.
-
 ## Environment Variables
 
 Create a `.env.local` file based on `.env.example`:
@@ -32,6 +24,23 @@ LEAD_FROM_EMAIL=
 ```
 
 The lead form posts to `/api/lead` and sends an email using Nodemailer. In development, submissions are also logged to `data/leads.json`.
+
+## Static Hosting (GitHub Pages)
+
+This repo is configured to deploy to GitHub Pages using a static export. The form will open the visitor's email client on the live site.
+
+1. Enable GitHub Pages in the repo settings.
+2. Wait for the `Deploy to GitHub Pages` action to finish.
+3. Your live URL will be:
+   `https://goldengraphixstudios.github.io/Precision-Cut-Concrete-Removal/`
+
+## Fetch Gallery Images
+
+```bash
+npm run fetch:gallery
+```
+
+Images are downloaded to `public/gallery`. If you skip this, the site shows clean gradient placeholders.
 
 ## Key Routes
 
@@ -58,6 +67,9 @@ The lead form posts to `/api/lead` and sends an email using Nodemailer. In devel
 
 ## Deployment
 
+### GitHub Pages
+- Push to `main` and GitHub Actions will publish from `out/`.
+
 ### Vercel
 1. Push to GitHub.
 2. Import the repo in Vercel.
@@ -67,5 +79,3 @@ The lead form posts to `/api/lead` and sends an email using Nodemailer. In devel
 ### Low-cost Hosting
 - Any Node-compatible host works. Configure environment variables for SMTP.
 - Run `npm run build` and `npm run start`.
-
-

@@ -10,6 +10,7 @@ const inputBase =
 
 export default function LeadForm() {
   const router = useRouter();
+  const staticExport = process.env.NEXT_PUBLIC_STATIC_EXPORT === "true";
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
     "idle"
   );
@@ -45,6 +46,20 @@ export default function LeadForm() {
     setStatus("loading");
     setToast(null);
     try {
+      if (staticExport) {
+        const subject = encodeURIComponent(
+          `Concrete cutting estimate - ${form.name}`
+        );
+        const body = encodeURIComponent(
+          `Name: ${form.name}\nPhone: ${form.phone}\nEmail: ${form.email || "N/A"}\nAddress: ${form.address}\nService: ${form.service}\nPreferred contact: ${form.contact}\nDetails: ${form.details}`
+        );
+        window.location.href = `mailto:precisioncutconcreteremoval@gmail.com?subject=${subject}&body=${body}`;
+        setStatus("success");
+        setToast("Email draft opened. Send it to finish your request.");
+        setTimeout(() => router.push("/thank-you"), 900);
+        return;
+      }
+
       const response = await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -66,7 +81,7 @@ export default function LeadForm() {
         error instanceof Error
           ? error.message
           : "Something went wrong. Please call or text us."
-      );
+        );
     }
   };
 
@@ -228,6 +243,11 @@ export default function LeadForm() {
           We respond quickly during normal business hours.
         </p>
       </div>
+      {staticExport && (
+        <p className="text-xs text-steel/50">
+          On this site, the form opens your email client to send the request.
+        </p>
+      )}
       {toast && (
         <div
           role="status"

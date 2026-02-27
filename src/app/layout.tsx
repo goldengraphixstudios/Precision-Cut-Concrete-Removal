@@ -19,8 +19,11 @@ const body = Inter({
   weight: ["400", "500", "600", "700"],
 });
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://precisioncutconcreteremoval.com"),
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Precision Cut Concrete Removal | St. Augustine Beach, FL",
     template: "%s | Precision Cut Concrete Removal",
@@ -32,7 +35,7 @@ export const metadata: Metadata = {
     description:
       "Concrete cutting, driveway and sidewalk removal, core drilling, trenching, and debris hauling in St. Augustine Beach, FL.",
     type: "website",
-    url: "https://precisioncutconcreteremoval.com",
+    url: siteUrl,
     images: [
       {
         url: "/brand/og-image.svg",
