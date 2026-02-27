@@ -6,6 +6,7 @@ import ButtonLink from "@/components/ui/ButtonLink";
 import GalleryCard from "@/components/sections/GalleryCard";
 import { business } from "@/lib/data";
 import { galleryBlurDataUrl, getGalleryAvailability } from "@/lib/gallery";
+import { withBasePath } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -15,20 +16,22 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   const gallery = getGalleryAvailability();
-  const availability = new Map(gallery.map((item) => [item.image, item.available]));
+  const availability = new Map(gallery.map((item) => [item.file, item.available]));
 
   const beforeAfter = [
     {
       title: "Driveway panel replacement",
-      before: "/gallery/driveway-removal.jpg",
-      after: "/gallery/pool-deck.jpg",
+      before: "driveway-removal.jpg",
+      after: "pool-deck.jpg",
     },
     {
       title: "Interior slab opening",
-      before: "/gallery/slab-cutting.jpg",
-      after: "/gallery/interior-saw.jpg",
+      before: "slab-cutting.jpg",
+      after: "interior-saw.jpg",
     },
   ];
+
+  const toSrc = (file: string) => withBasePath(`/gallery/${file}`);
 
   return (
     <>
@@ -75,12 +78,12 @@ export default function ProjectsPage() {
                 className="overflow-hidden rounded-2xl border border-steel/10 bg-white shadow-card"
               >
                 <div className="grid grid-cols-2">
-                  {([item.before, item.after] as const).map((image, index) =>
-                    availability.get(image) ? (
-                      <div key={image} className="relative h-48">
+                  {([item.before, item.after] as const).map((file, index) =>
+                    availability.get(file) ? (
+                      <div key={file} className="relative h-48">
                         <div className="absolute inset-0 animate-pulse bg-concrete-gray" />
                         <Image
-                          src={image}
+                          src={toSrc(file)}
                           alt={`${item.title} ${index === 0 ? "before" : "after"}`}
                           fill
                           className="object-cover"
@@ -91,7 +94,7 @@ export default function ProjectsPage() {
                       </div>
                     ) : (
                       <div
-                        key={image}
+                        key={file}
                         className="h-48 bg-gradient-to-br from-concrete-gray to-concrete-white"
                       />
                     )

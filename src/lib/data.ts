@@ -114,12 +114,12 @@ export const credibility = [
 ];
 
 export const galleryItems = [
-  { title: "Driveway Removal", image: "/gallery/driveway-removal.jpg" },
-  { title: "Slab Cutting", image: "/gallery/slab-cutting.jpg" },
-  { title: "Core Drilling", image: "/gallery/core-drilling.jpg" },
-  { title: "Pool Deck Removal", image: "/gallery/pool-deck.jpg" },
-  { title: "Trenching Run", image: "/gallery/trenching.jpg" },
-  { title: "Interior Saw Cutting", image: "/gallery/interior-saw.jpg" },
+  { title: "Driveway Removal", file: "driveway-removal.jpg" },
+  { title: "Slab Cutting", file: "slab-cutting.jpg" },
+  { title: "Core Drilling", file: "core-drilling.jpg" },
+  { title: "Pool Deck Removal", file: "pool-deck.jpg" },
+  { title: "Trenching Run", file: "trenching.jpg" },
+  { title: "Interior Saw Cutting", file: "interior-saw.jpg" },
 ];
 
 export const faqItems = [

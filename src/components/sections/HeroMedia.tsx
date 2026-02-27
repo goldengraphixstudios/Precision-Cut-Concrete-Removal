@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import ConcreteTexture from "@/components/svg/ConcreteTexture";
+import { withBasePath } from "@/lib/site";
 
 const blurDataUrl =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='12'%3E%3Crect width='16' height='12' fill='%23E5E7EB'/%3E%3C/svg%3E";
@@ -10,6 +11,8 @@ const blurDataUrl =
 export default function HeroMedia() {
   const [primaryOk, setPrimaryOk] = useState(true);
   const [secondaryOk, setSecondaryOk] = useState(true);
+  const primarySrc = withBasePath("/gallery/driveway-removal.jpg");
+  const secondarySrc = withBasePath("/gallery/core-drilling.jpg");
 
   return (
     <div className="relative">
@@ -17,7 +20,7 @@ export default function HeroMedia() {
         <div className="absolute inset-0 bg-gradient-to-tr from-concrete-gray/60 via-transparent to-white/60" />
         {primaryOk && (
           <Image
-            src="/gallery/driveway-removal.jpg"
+            src={primarySrc}
             alt="Concrete cutting and driveway removal"
             fill
             priority
@@ -36,10 +39,10 @@ export default function HeroMedia() {
       <div className="absolute -bottom-8 -left-6 w-44 sm:w-52 md:w-60">
         <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-steel/15 bg-white shadow-card">
           <div className="absolute inset-0 bg-gradient-to-tr from-white/20 via-transparent to-white/70" />
-          {secondaryOk && (
-            <Image
-              src="/gallery/core-drilling.jpg"
-              alt="Core drilling and utility access"
+        {secondaryOk && (
+          <Image
+            src={secondarySrc}
+            alt="Core drilling and utility access"
               fill
               sizes="(max-width: 1024px) 50vw, 25vw"
               className="object-cover"
