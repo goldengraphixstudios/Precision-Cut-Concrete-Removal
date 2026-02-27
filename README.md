@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Precision Cut Concrete Removal - Funnel Website
+
+Production-ready marketing funnel for Precision Cut Concrete Removal LLC built with Next.js (App Router), Tailwind CSS, and Framer Motion.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+App runs at `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Fetch Gallery Images
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run fetch:gallery
+```
 
-## Learn More
+Images are downloaded to `public/gallery`. If you skip this, the site shows clean gradient placeholders.
 
-To learn more about Next.js, take a look at the following resources:
+## Environment Variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Create a `.env.local` file based on `.env.example`:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+SMTP_HOST=
+SMTP_PORT=
+SMTP_USER=
+SMTP_PASS=
+LEAD_TO_EMAIL=
+LEAD_FROM_EMAIL=
+```
 
-## Deploy on Vercel
+The lead form posts to `/api/lead` and sends an email using Nodemailer. In development, submissions are also logged to `data/leads.json`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Key Routes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `/` landing funnel
+- `/services` detailed services
+- `/projects` gallery + before/after
+- `/about` company story + values
+- `/contact` map + form + click-to-call
+- `/thank-you` form confirmation
+
+## Where To Edit Copy
+
+- Global content and service list: `src/lib/data.ts`
+- Home page layout: `src/app/page.tsx`
+- Services page: `src/app/services/page.tsx`
+- Projects page: `src/app/projects/page.tsx`
+- About page: `src/app/about/page.tsx`
+- Contact page: `src/app/contact/page.tsx`
+
+## Brand Assets
+
+- Logos and favicon: `public/brand/`
+- SVG icon set: `src/components/svg/`
+
+## Deployment
+
+### Vercel
+1. Push to GitHub.
+2. Import the repo in Vercel.
+3. Add the environment variables in Vercel settings.
+4. Deploy.
+
+### Low-cost Hosting
+- Any Node-compatible host works. Configure environment variables for SMTP.
+- Run `npm run build` and `npm run start`.
+
+

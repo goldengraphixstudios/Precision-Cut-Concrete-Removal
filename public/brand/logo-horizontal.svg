@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="220" viewBox="0 0 960 220" fill="none">
+  <rect width="960" height="220" fill="#F8FAFC" />
+  <g transform="translate(32 14)">
+    <circle cx="96" cy="96" r="70" stroke="#F97316" stroke-width="12" />
+    <g fill="#F97316">
+      <rect x="90" y="6" width="12" height="28" rx="3" />
+      <rect x="90" y="158" width="12" height="28" rx="3" />
+      <rect x="6" y="90" width="28" height="12" rx="3" />
+      <rect x="158" y="90" width="28" height="12" rx="3" />
+    </g>
+    <path d="M70 140V52h44c18 0 33 15 33 33 0 19-15 35-33 35H98v20H70zm20-66h23c8 0 14-6 14-13 0-8-6-14-14-14H90v27z" fill="#F97316" />
+  </g>
+  <text x="250" y="108" font-family="Oswald, Arial, sans-serif" font-size="48" font-weight="600" letter-spacing="6" fill="#0F172A">
+    PRECISION CUT
+  </text>
+  <text x="250" y="150" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="500" letter-spacing="4" fill="#0F172A" fill-opacity="0.65">
+    CONCRETE REMOVAL LLC
+  </text>
+  <rect x="250" y="165" width="220" height="6" fill="#F97316" />
+</svg>
+
+
+
